@@ -10,7 +10,7 @@ export const Header: React.FC<Props> = ({ isRunning, onToggle }) => {
                 <div className="flex items-center gap-3">
                     <div className="relative">
                         <div className="absolute inset-0 bg-blue-500 blur-lg opacity-20 rounded-full animate-pulse"></div>
-                        <img src="/vite.svg" alt="Logo" className="w-8 h-8 relative z-10" />
+                        <img src="/favicon.svg" alt="Logo" className="w-8 h-8 relative z-10" />
                     </div>
                     <div>
                         <h1 className="text-lg font-bold text-slate-900 tracking-tight leading-none">DNS Spray</h1>
