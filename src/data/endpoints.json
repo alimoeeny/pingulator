@@ -1,0 +1,230 @@
+[
+    {
+        "id": "global",
+        "label": "Global External HTTPS Load Balancer",
+        "url": "https://global.gcping.com",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-east1",
+        "label": "Taiwan",
+        "url": "https://asia-east1-5tkroniexa-de.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-east2",
+        "label": "Hong Kong",
+        "url": "https://asia-east2-5tkroniexa-df.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-northeast1",
+        "label": "Tokyo",
+        "url": "https://asia-northeast1-5tkroniexa-an.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-northeast2",
+        "label": "Osaka",
+        "url": "https://asia-northeast2-5tkroniexa-dt.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-northeast3",
+        "label": "Seoul",
+        "url": "https://asia-northeast3-5tkroniexa-du.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-south1",
+        "label": "Mumbai",
+        "url": "https://asia-south1-5tkroniexa-el.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-south2",
+        "label": "Delhi",
+        "url": "https://asia-south2-5tkroniexa-em.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-southeast1",
+        "label": "Singapore",
+        "url": "https://asia-southeast1-5tkroniexa-as.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "asia-southeast2",
+        "label": "Jakarta",
+        "url": "https://asia-southeast2-5tkroniexa-et.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "australia-southeast1",
+        "label": "Sydney",
+        "url": "https://australia-southeast1-5tkroniexa-ts.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "australia-southeast2",
+        "label": "Melbourne",
+        "url": "https://australia-southeast2-5tkroniexa-km.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-central2",
+        "label": "Warsaw",
+        "url": "https://europe-central2-5tkroniexa-lm.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-north1",
+        "label": "Finland",
+        "url": "https://europe-north1-5tkroniexa-lz.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west1",
+        "label": "Belgium",
+        "url": "https://europe-west1-5tkroniexa-ew.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west2",
+        "label": "London",
+        "url": "https://europe-west2-5tkroniexa-nw.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west3",
+        "label": "Frankfurt",
+        "url": "https://europe-west3-5tkroniexa-ey.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west4",
+        "label": "Netherlands",
+        "url": "https://europe-west4-5tkroniexa-ez.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west6",
+        "label": "Zurich",
+        "url": "https://europe-west6-5tkroniexa-oa.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west8",
+        "label": "Milan",
+        "url": "https://europe-west8-5tkroniexa-oc.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west9",
+        "label": "Paris",
+        "url": "https://europe-west9-5tkroniexa-od.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-west10",
+        "label": "Berlin",
+        "url": "https://europe-west10-5tkroniexa-oe.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "europe-southwest1",
+        "label": "Madrid",
+        "url": "https://europe-southwest1-5tkroniexa-no.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "me-west1",
+        "label": "Tel Aviv",
+        "url": "https://me-west1-5tkroniexa-zf.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "northamerica-northeast1",
+        "label": "Montréal",
+        "url": "https://northamerica-northeast1-5tkroniexa-nn.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "northamerica-northeast2",
+        "label": "Toronto",
+        "url": "https://northamerica-northeast2-5tkroniexa-pd.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "southamerica-east1",
+        "label": "São Paulo",
+        "url": "https://southamerica-east1-5tkroniexa-rj.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "southamerica-west1",
+        "label": "Santiago",
+        "url": "https://southamerica-west1-5tkroniexa-tl.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-central1",
+        "label": "Iowa",
+        "url": "https://us-central1-5tkroniexa-uc.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-east1",
+        "label": "South Carolina",
+        "url": "https://us-east1-5tkroniexa-ue.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-east4",
+        "label": "North Virginia",
+        "url": "https://us-east4-5tkroniexa-uk.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-east5",
+        "label": "Columbus",
+        "url": "https://us-east5-5tkroniexa-ul.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-south1",
+        "label": "Dallas",
+        "url": "https://us-south1-5tkroniexa-vp.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-west1",
+        "label": "Oregon",
+        "url": "https://us-west1-5tkroniexa-uw.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-west2",
+        "label": "Los Angeles",
+        "url": "https://us-west2-5tkroniexa-wl.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-west3",
+        "label": "Salt Lake City",
+        "url": "https://us-west3-5tkroniexa-wm.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "us-west4",
+        "label": "Las Vegas",
+        "url": "https://us-west4-5tkroniexa-wn.a.run.app",
+        "group": "GCP"
+    },
+    {
+        "id": "wikipedia",
+        "label": "Wikipedia",
+        "url": "https://www.wikipedia.org",
+        "group": "Custom Sites"
+    }
+]
