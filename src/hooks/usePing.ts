@@ -31,21 +31,26 @@ export const usePing = (url: string, group: string) => {
     const pingOnce = async () => {
         const start = performance.now();
         const isGCP = group === 'GCP';
-        /*
-          For non-GCP, we use no-cors.
-          For GCP, we use 'cors' if we want to read the body (for global proxy check),
-          but for pure latency, 'no-cors' is faster and less error prone if headers are missing.
-          However, the original app appends /api/ping for GCP.
-        */
+
+        // Use the URL as-is for non-GCP, append /api/ping for GCP
         const targetUrl = isGCP ? `${url}/api/ping` : url;
-        const mode: RequestMode = isGCP ? 'cors' : 'no-cors';
+
+        // Use CORS mode for all endpoints so we can validate status codes
+        // This means Custom Sites must have CORS headers configured
+        const mode: RequestMode = 'cors';
 
         try {
-            await fetch(targetUrl, {
+            const response = await fetch(targetUrl, {
                 mode,
                 cache: 'no-cache',
-                // invalid credentials to prevent auth dialogs? or just omit
             });
+
+            // Validate the status code for ALL endpoints (< 300)
+            if (!response.ok) {
+                console.error(`Ping failed for ${url}: HTTP ${response.status}`);
+                return null;
+            }
+
             const end = performance.now();
             return end - start;
         } catch (e) {

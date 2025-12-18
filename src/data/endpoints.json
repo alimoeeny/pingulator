@@ -232,5 +232,23 @@
         "label": "HappyPathology",
         "url": "https://happypathology.com",
         "group": "Custom Sites"
+    },
+    {
+        "id": "HappyPathology API",
+        "label": "HappyPathology API",
+        "url": "https://api.happypathology.com/heartbeat",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "devHappyPathology",
+        "label": "dev HappyPathology",
+        "url": "https://dev.happypathology.com/heartbeat",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "devHappyPathology API",
+        "label": "dev HappyPathology API",
+        "url": "https://dev.api.happypathology.com/heartbceat",
+        "group": "Custom Sites"
     }
 ]
