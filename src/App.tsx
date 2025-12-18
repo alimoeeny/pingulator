@@ -83,7 +83,7 @@ function App() {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-8 mx-4 sm:mx-0">
           {groups.map(group => (
             <div key={group} className="bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/5 overflow-hidden transition-all hover:shadow-md">
               {/* Group Header */}

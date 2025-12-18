@@ -10,6 +10,7 @@ export interface UsePingReturn {
     median: number | null;
     status: 'idle' | 'running' | 'stopped';
     completedIterations: number;
+    hasNetworkError: boolean;
     ping: () => Promise<void>;
     start: (iterations?: number) => void;
     stop: () => void;
@@ -19,6 +20,7 @@ export const usePing = (url: string, group: string) => {
     const [latencies, setLatencies] = useState<number[]>([]);
     const [status, setStatus] = useState<'idle' | 'running' | 'stopped'>('idle');
     const [completedIterations, setCompletedIterations] = useState(0);
+    const [hasNetworkError, setHasNetworkError] = useState(false);
     const stopRef = useRef(false);
 
     const calculateMedian = (arr: number[]) => {
@@ -35,26 +37,24 @@ export const usePing = (url: string, group: string) => {
         // Use the URL as-is for non-GCP, append /api/ping for GCP
         const targetUrl = isGCP ? `${url}/api/ping` : url;
 
-        // Use CORS mode for all endpoints so we can validate status codes
-        // This means Custom Sites must have CORS headers configured
-        const mode: RequestMode = 'cors';
+        // Use no-cors mode to avoid CORS issues
+        // Note: Cannot read HTTP status codes in no-cors mode
+        const mode: RequestMode = 'no-cors';
 
         try {
-            const response = await fetch(targetUrl, {
+            await fetch(targetUrl, {
                 mode,
                 cache: 'no-cache',
             });
 
-            // Validate the status code for ALL endpoints (< 300)
-            if (!response.ok) {
-                console.error(`Ping failed for ${url}: HTTP ${response.status}`);
-                return null;
-            }
-
+            // In no-cors mode, if fetch completes, the network request succeeded
+            // (even if HTTP status was 404, 500, etc - we can't tell)
             const end = performance.now();
             return end - start;
         } catch (e) {
-            console.error(`Ping failed for ${url}`, e);
+            // Network error (DNS failure, connection timeout, etc)
+            console.error(`Network error for ${url}`, e);
+            setHasNetworkError(true);
             return null;
         }
     };
@@ -62,6 +62,7 @@ export const usePing = (url: string, group: string) => {
     const start = useCallback(async (iterations = 10) => {
         setLatencies([]);
         setCompletedIterations(0);
+        setHasNetworkError(false);
         setStatus('running');
         stopRef.current = false;
 
@@ -91,6 +92,7 @@ export const usePing = (url: string, group: string) => {
         median: calculateMedian(latencies),
         status,
         completedIterations,
+        hasNetworkError,
         ping: pingOnce,
         start,
         stop

@@ -248,7 +248,7 @@
     {
         "id": "devHappyPathology API",
         "label": "dev HappyPathology API",
-        "url": "https://dev.api.happypathology.com/heartbceat",
+        "url": "https://dev.api.happypathology.com/heartbeat",
         "group": "Custom Sites"
     }
 ]

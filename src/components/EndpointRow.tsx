@@ -14,7 +14,7 @@ export interface EndpointRowRef {
 }
 
 export const EndpointRow = forwardRef<EndpointRowRef, Props>(({ endpoint, isFastest, onMedianUpdate }, ref) => {
-    const { median, start, stop, completedIterations, status } = usePing(endpoint.url, endpoint.group || 'GCP');
+    const { median, start, stop, completedIterations, status, hasNetworkError } = usePing(endpoint.url, endpoint.group || 'GCP');
 
     useImperativeHandle(ref, () => ({
         start: () => start(10),
@@ -30,15 +30,17 @@ export const EndpointRow = forwardRef<EndpointRowRef, Props>(({ endpoint, isFast
     return (
         <tr className={`
             border-b border-gray-100 last:border-0 transition-colors duration-200
-            ${isFastest ? 'bg-emerald-50/60 hover:bg-emerald-100/60' : 'hover:bg-slate-50'}
+            ${hasNetworkError ? 'bg-red-50/40 hover:bg-red-100/40' :
+                isFastest ? 'bg-emerald-50/60 hover:bg-emerald-100/60' : 'hover:bg-slate-50'}
         `}>
             {/* Location Label */}
             <td className="py-4 px-6">
                 <div className="flex items-center gap-3">
                     <div className={`
                         w-2 h-2 rounded-full shrink-0 transition-all duration-500
-                        ${isFastest ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]' :
-                            isRunning ? 'bg-indigo-400 animate-pulse' : 'bg-slate-300'}
+                        ${hasNetworkError ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' :
+                            isFastest ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]' :
+                                isRunning ? 'bg-indigo-400 animate-pulse' : 'bg-slate-300'}
                     `} />
                     <div className="flex flex-col">
                         <span className={`text-sm font-medium ${isFastest ? 'text-emerald-900' : 'text-slate-700'}`}>
@@ -74,7 +76,9 @@ export const EndpointRow = forwardRef<EndpointRowRef, Props>(({ endpoint, isFast
             {/* Latency Metric */}
             <td className="py-4 px-6 text-right">
                 <div className="flex flex-col items-end gap-1">
-                    {median ? (
+                    {hasNetworkError ? (
+                        <span className="text-sm font-semibold text-red-600">NETWORK ERROR</span>
+                    ) : median ? (
                         <div className="flex items-baseline gap-1">
                             <span className={`text-lg font-bold tabular-nums tracking-tight ${isFastest ? 'text-emerald-600' : 'text-slate-900'}`}>
                                 {Math.round(median)}
