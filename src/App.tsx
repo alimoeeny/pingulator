@@ -23,15 +23,11 @@ function App() {
 
   const handleStart = () => {
     setIsRunning(true);
-    // Start all pings
     Object.values(rowRefs.current).forEach(ref => ref?.start());
 
-    // Auto-stop is handled by individual hooks (10 iterations),
-    // but we need to track global state.
-    // For simplicity, we'll just toggle the button state after a timeout or let user stop.
-    // Or better: update isRunning when all are done?
-    // Let's just create a global timeout for the button state for now (approx 10s is enough for 10 pings)
-    setTimeout(() => setIsRunning(false), 15000);
+    // Simulating the "global" stop after ~12s (10 pings * 1s + buffer)
+    // Ideally this should be data driven but simple timeout works for UX
+    setTimeout(() => setIsRunning(false), 12000);
   };
 
   const handleStop = () => {
@@ -46,12 +42,12 @@ function App() {
     });
   };
 
-  // Calculate fastest
+  // Calculate fastest (only count legitimate values)
   useEffect(() => {
     let min = Infinity;
     let id: string | null = null;
     Object.entries(medians).forEach(([k, v]) => {
-      if (v !== null && v < min) {
+      if (v !== null && v > 0 && v < min) {
         min = v;
         id = k;
       }
@@ -73,26 +69,40 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20 font-sans text-gray-900">
+    <div className="min-h-screen bg-slate-50/50 font-sans text-slate-900 pb-24 selection:bg-indigo-100 selection:text-indigo-900">
       <Header isRunning={isRunning} onToggle={isRunning ? handleStop : handleStart} />
 
-      <main className="max-w-4xl mx-auto px-4 mt-8">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        {/* Hero / Info Section */}
+        <div className="text-center mb-10 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
+            Global Latency Check
+          </h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Measure your connection latency to Google Cloud regions and other popular services directly from your browser.
+          </p>
+        </div>
+
+        <div className="space-y-8">
           {groups.map(group => (
-            <div key={group}>
+            <div key={group} className="bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/5 overflow-hidden transition-all hover:shadow-md">
               {/* Group Header */}
-              <div className="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between sticky top-16 z-10">
-                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest">{group}</h3>
-                <span className="text-xs text-gray-400">{groupedEndpoints[group].length} locations</span>
+              <div className="bg-slate-50/80 backdrop-blur-sm px-6 py-4 border-b border-slate-100 flex items-center justify-between sticky top-16 z-10 supports-[backdrop-filter]:bg-slate-50/60">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest">{group}</h3>
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                    {groupedEndpoints[group].length}
+                  </span>
+                </div>
               </div>
 
               {/* Table */}
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-white border-b border-gray-100 text-xs text-gray-400 uppercase tracking-wider">
-                    <th className="py-3 px-4 font-semibold w-1/2">Location</th>
-                    <th className="py-3 px-4 font-semibold hidden md:table-cell">Region ID</th>
-                    <th className="py-3 px-4 font-semibold text-right">Latency</th>
+                  <tr className="bg-white border-b border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    <th className="py-4 px-6 w-1/2">Location</th>
+                    <th className="py-4 px-6 hidden md:table-cell">Region ID</th>
+                    <th className="py-4 px-6 text-right">Latency</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -100,6 +110,8 @@ function App() {
                     // Sort by median if available, else label
                     const medA = medians[a.id] || Infinity;
                     const medB = medians[b.id] || Infinity;
+                    // Push non-started/null to bottom but keep alphabetical
+                    if (medA === Infinity && medB === Infinity) return a.label.localeCompare(b.label);
                     if (medA !== medB) return medA - medB;
                     return a.label.localeCompare(b.label);
                   }).map(endpoint => (
@@ -117,10 +129,10 @@ function App() {
           ))}
         </div>
 
-        <div className="mt-8 text-center text-sm text-gray-500">
+        <div className="mt-12 text-center text-sm text-slate-400 max-w-lg mx-auto leading-relaxed">
           <p>
-            This tool measures latency from your browser to Google Cloud regions.<br />
-            For "Custom Sites", it uses opaque pinging to estimate connection time.
+            For "Custom Sites", we use opaque network requests to estimate connection time.
+            Precise values may vary due to network conditions and CORS policies.
           </p>
         </div>
       </main>

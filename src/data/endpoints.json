@@ -226,5 +226,11 @@
         "label": "Wikipedia",
         "url": "https://www.wikipedia.org",
         "group": "Custom Sites"
+    },
+    {
+        "id": "HappyPathology",
+        "label": "HappyPathology",
+        "url": "https://happypathology.com",
+        "group": "Custom Sites"
     }
 ]

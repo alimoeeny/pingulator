@@ -9,6 +9,7 @@ export interface UsePingReturn {
     latencies: number[];
     median: number | null;
     status: 'idle' | 'running' | 'stopped';
+    completedIterations: number;
     ping: () => Promise<void>;
     start: (iterations?: number) => void;
     stop: () => void;
@@ -17,6 +18,7 @@ export interface UsePingReturn {
 export const usePing = (url: string, group: string) => {
     const [latencies, setLatencies] = useState<number[]>([]);
     const [status, setStatus] = useState<'idle' | 'running' | 'stopped'>('idle');
+    const [completedIterations, setCompletedIterations] = useState(0);
     const stopRef = useRef(false);
 
     const calculateMedian = (arr: number[]) => {
@@ -54,6 +56,7 @@ export const usePing = (url: string, group: string) => {
 
     const start = useCallback(async (iterations = 10) => {
         setLatencies([]);
+        setCompletedIterations(0);
         setStatus('running');
         stopRef.current = false;
 
@@ -66,6 +69,7 @@ export const usePing = (url: string, group: string) => {
                     return next;
                 });
             }
+            setCompletedIterations(prev => prev + 1);
             // Small delay to prevent freezing/choking
             await new Promise(r => setTimeout(r, 100));
         }
@@ -81,6 +85,7 @@ export const usePing = (url: string, group: string) => {
         latencies,
         median: calculateMedian(latencies),
         status,
+        completedIterations,
         ping: pingOnce,
         start,
         stop
