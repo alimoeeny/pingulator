@@ -250,5 +250,11 @@
         "label": "dev HappyPathology API",
         "url": "https://dev.api.happypathology.com/heartbeat",
         "group": "Custom Sites"
+    },
+    {
+        "id": "ali.moeeny.com",
+        "label": "ali.moeeny.com",
+        "url": "https://ali.moeeny.com",
+        "group": "Custom Sites"
     }
 ]
