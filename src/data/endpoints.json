@@ -256,5 +256,23 @@
         "label": "ali.moeeny.com",
         "url": "https://ali.moeeny.com",
         "group": "Custom Sites"
+    },
+    {
+        "id": "github.com",
+        "label": "GitHub",
+        "url": "https://github.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "amazon.com",
+        "label": "Amazon",
+        "url": "https://amazon.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "aws",
+        "label": "AWS",
+        "url": "https://aws.amazon.com",
+        "group": "Custom Sites"
     }
 ]
