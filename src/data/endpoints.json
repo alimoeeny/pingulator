@@ -274,5 +274,29 @@
         "label": "AWS",
         "url": "https://aws.amazon.com",
         "group": "Custom Sites"
+    },
+    {
+        "id":"huggingface.co",
+        "label":"HuggingFace",
+        "url":"https://huggingface.co",
+        "group":"Custom Sites"
+    },
+    {
+        "id": "ccc",
+        "label": "CCC",
+        "url": "https://ccc.de",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "media.ccc.de",
+        "label": "media.ccc.de",
+        "url": "https://media.ccc.de",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "openai.com",
+        "label": "OpenAI",
+        "url": "https://openai.com",
+        "group": "Custom Sites"
     }
 ]
