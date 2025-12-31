@@ -298,5 +298,34 @@
         "label": "OpenAI",
         "url": "https://openai.com",
         "group": "Custom Sites"
+    },{
+        "id": "youtube.com",
+        "label": "YouTube",
+        "url": "https://youtube.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "reddit.com",
+        "label": "Reddit",
+        "url": "https://reddit.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "cloudflare.com",
+        "label": "Cloudflare",
+        "url": "https://cloudflare.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "netflix.com",
+        "label": "Netflix",
+        "url": "https://netflix.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "discord.com",
+        "label": "Discord",
+        "url": "https://discord.com",
+        "group": "Custom Sites"
     }
 ]
