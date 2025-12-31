@@ -327,5 +327,10 @@
         "label": "Discord",
         "url": "https://discord.com",
         "group": "Custom Sites"
+    }, {
+        "id":  "mail.google.com",
+        "label": "Gmail",
+        "url": "https://mail.google.com",
+        "group": "Custom Sites"
     }
 ]
