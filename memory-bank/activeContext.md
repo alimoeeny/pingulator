@@ -5,8 +5,9 @@ Setting up GitHub Actions for continuous deployment to GitHub Pages.
 
 ## Recent Changes
 - Initialized Memory Bank.
-- Created `.github/workflows/deploy.yml` using native GitHub Actions (replacing local `gh-pages` script dependency for CI).
+- Created `.github/workflows/deploy.yml` using native GitHub Actions.
 - Confirmed `vite.config.ts` handles custom domain root path.
+- Encountered GitHub Environment protection rule error during deployment.
 
 ## Next Steps
-- User to push changes and enable GitHub Pages in repository settings.
+- User to adjust GitHub Environment settings to allow deployment from `main`.
