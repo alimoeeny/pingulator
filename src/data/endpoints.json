@@ -361,5 +361,11 @@
         "label": "Mastodon",
         "url": "https://mastodon.social",
         "group": "Custom Sites"
+    },
+    {
+        "id": "praxyan.org",
+        "label": "Praxyan",
+        "url": "https://www.praxyan.org",
+        "group": "Custom Sites"
     }
 ]
