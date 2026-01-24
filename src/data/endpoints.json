@@ -252,6 +252,12 @@
         "group": "Custom Sites"
     },
     {
+        "id":"docs.happypathology.com",
+        "label":"HappyPathology Docs",
+        "url":"https://docs.happypathology.com",
+        "group":"Custom Sites"
+    },
+    {
         "id": "ali.moeeny.com",
         "label": "ali.moeeny.com",
         "url": "https://ali.moeeny.com",
