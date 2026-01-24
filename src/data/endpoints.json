@@ -358,11 +358,6 @@
         "group": "Custom Sites"
     },
     {
-        "id": "netflix.com",
-        "label": "Netflix",
-        "url": "https://netflix.com",
-        "group": "Custom Sites"
-    },{
         "id": "mastodon.social",
         "label": "Mastodon",
         "url": "https://mastodon.social",
