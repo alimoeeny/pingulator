@@ -258,6 +258,12 @@
         "group":"Custom Sites"
     },
     {
+        "id": "status.happypathology.com",
+        "label": "HappyPathology Status",
+        "url": "https://status.happypathology.com",
+        "group": "Custom Sites"
+    },
+    {
         "id": "ali.moeeny.com",
         "label": "ali.moeeny.com",
         "url": "https://ali.moeeny.com",
