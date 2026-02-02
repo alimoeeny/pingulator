@@ -382,5 +382,11 @@
         "label": "Minthe",
         "url": "https://minthe.online/",
         "group": "Custom Sites"
+    },
+    {
+        "id": "mintheonline.com",
+        "label": "MintheOnline.com",
+        "url": "mintheonline.com",
+        "group": "Custom Sites"
     }
 ]
