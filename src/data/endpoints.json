@@ -145,7 +145,7 @@
     },
     {
         "id": "northamerica-northeast1",
-        "label": "Montréal",
+        "label": "Montr\u00e9al",
         "url": "https://northamerica-northeast1-5tkroniexa-nn.a.run.app",
         "group": "GCP"
     },
@@ -157,7 +157,7 @@
     },
     {
         "id": "southamerica-east1",
-        "label": "São Paulo",
+        "label": "S\u00e3o Paulo",
         "url": "https://southamerica-east1-5tkroniexa-rj.a.run.app",
         "group": "GCP"
     },
@@ -252,10 +252,10 @@
         "group": "Custom Sites"
     },
     {
-        "id":"docs.happypathology.com",
-        "label":"HappyPathology Docs",
-        "url":"https://docs.happypathology.com",
-        "group":"Custom Sites"
+        "id": "docs.happypathology.com",
+        "label": "HappyPathology Docs",
+        "url": "https://docs.happypathology.com",
+        "group": "Custom Sites"
     },
     {
         "id": "status.happypathology.com",
@@ -288,10 +288,10 @@
         "group": "Custom Sites"
     },
     {
-        "id":"huggingface.co",
-        "label":"HuggingFace",
-        "url":"https://huggingface.co",
-        "group":"Custom Sites"
+        "id": "huggingface.co",
+        "label": "HuggingFace",
+        "url": "https://huggingface.co",
+        "group": "Custom Sites"
     },
     {
         "id": "ccc",
@@ -310,7 +310,8 @@
         "label": "OpenAI",
         "url": "https://openai.com",
         "group": "Custom Sites"
-    },{
+    },
+    {
         "id": "youtube.com",
         "label": "YouTube",
         "url": "https://youtube.com",
@@ -339,8 +340,9 @@
         "label": "Discord",
         "url": "https://discord.com",
         "group": "Custom Sites"
-    }, {
-        "id":  "mail.google.com",
+    },
+    {
+        "id": "mail.google.com",
         "label": "Gmail",
         "url": "https://mail.google.com",
         "group": "Custom Sites"
@@ -373,6 +375,12 @@
         "id": "praxyan.org",
         "label": "Praxyan",
         "url": "https://www.praxyan.org",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "minthe.online",
+        "label": "Minthe",
+        "url": "https://minthe.online/",
         "group": "Custom Sites"
     }
 ]
