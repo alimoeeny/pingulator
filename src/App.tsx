@@ -136,6 +136,10 @@ function App() {
           </p>
         </div>
       </main>
+      <div className='w-full mt-1 flex justify-center font-bold text-gray-500'>
+        Hit Counter:
+      <div className='ml-2' id="incrementor-aggregate-counter"></div>
+      </div>
     </div>
   );
 }
