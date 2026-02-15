@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Header } from './components/Header';
 import { EndpointRow } from './components/EndpointRow';
 import type { EndpointRowRef } from './components/EndpointRow';
+import { AdblockSection } from './components/AdblockSection';
+import type { AdblockRowRef } from './components/AdblockRow';
 import endpointsData from './data/endpoints.json';
 import type { Endpoint } from './types';
 
@@ -20,10 +22,12 @@ function App() {
 
   // refs to control pingers
   const rowRefs = useRef<Record<string, EndpointRowRef | null>>({});
+  const adblockRefs = useRef<Record<string, AdblockRowRef | null>>({});
 
   const handleStart = () => {
     setIsRunning(true);
     Object.values(rowRefs.current).forEach(ref => ref?.start());
+    Object.values(adblockRefs.current).forEach(ref => ref?.start());
 
     // Simulating the "global" stop after ~12s (10 pings * 1s + buffer)
     // Ideally this should be data driven but simple timeout works for UX
@@ -33,6 +37,7 @@ function App() {
   const handleStop = () => {
     setIsRunning(false);
     Object.values(rowRefs.current).forEach(ref => ref?.stop());
+    Object.values(adblockRefs.current).forEach(ref => ref?.stop());
   };
 
   const handleMedianUpdate = (id: string, median: number | null) => {
@@ -61,10 +66,12 @@ function App() {
     return () => handleStop();
   }, []);
 
-  // Sort groups: Custom first, then GCP
+  // Sort groups: Custom Sites first, then Adblock Check, then GCP last
+  const groupOrder: Record<string, number> = { 'Custom Sites': 0, 'Adblock Check': 1, 'GCP': 2 };
   const groups = Object.keys(groupedEndpoints).sort((a, b) => {
-    if (a === 'GCP') return 1;
-    if (b === 'GCP') return -1;
+    const oa = groupOrder[a] ?? 1;
+    const ob = groupOrder[b] ?? 1;
+    if (oa !== ob) return oa - ob;
     return a.localeCompare(b);
   });
 
@@ -81,51 +88,60 @@ function App() {
           <p className="text-lg text-slate-600 leading-relaxed">
             Measure your connection latency to Google Cloud regions and other popular services directly from your browser.
           </p>
+          <p>Check your connectivity, your DNS settings, firewall rules and adblock effectiveness and your overall network performance.</p>
         </div>
 
         <div className="space-y-8 mx-4 sm:mx-0">
           {groups.map(group => (
-            <div key={group} className="bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/5 overflow-hidden transition-all hover:shadow-md">
-              {/* Group Header */}
-              <div className="bg-slate-50/80 backdrop-blur-sm px-6 py-4 border-b border-slate-100 flex items-center justify-between sticky top-16 z-10 supports-[backdrop-filter]:bg-slate-50/60">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest">{group}</h3>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
-                    {groupedEndpoints[group].length}
-                  </span>
+            group === 'Adblock Check' ? (
+              <AdblockSection
+                key={group}
+                endpoints={groupedEndpoints[group]}
+                rowRefs={adblockRefs}
+              />
+            ) : (
+              <div key={group} className="bg-white rounded-2xl shadow-sm ring-1 ring-slate-900/5 overflow-hidden transition-all hover:shadow-md">
+                {/* Group Header */}
+                <div className="bg-slate-50/80 backdrop-blur-sm px-6 py-4 border-b border-slate-100 flex items-center justify-between sticky top-16 z-10 supports-[backdrop-filter]:bg-slate-50/60">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest">{group}</h3>
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                      {groupedEndpoints[group].length}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Table */}
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-white border-b border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    <th className="py-4 px-6 w-1/2">Location</th>
-                    <th className="py-4 px-6 hidden md:table-cell">Region ID</th>
-                    <th className="py-4 px-6 text-right">Latency</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {groupedEndpoints[group].sort((a, b) => {
-                    // Sort by median if available, else label
-                    const medA = medians[a.id] || Infinity;
-                    const medB = medians[b.id] || Infinity;
-                    // Push non-started/null to bottom but keep alphabetical
-                    if (medA === Infinity && medB === Infinity) return a.label.localeCompare(b.label);
-                    if (medA !== medB) return medA - medB;
-                    return a.label.localeCompare(b.label);
-                  }).map(endpoint => (
-                    <EndpointRow
-                      key={endpoint.id}
-                      endpoint={endpoint}
-                      isFastest={endpoint.id === fastestId}
-                      onMedianUpdate={handleMedianUpdate}
-                      ref={el => { rowRefs.current[endpoint.id] = el; }}
-                    />
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                {/* Table */}
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-white border-b border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                      <th className="py-4 px-6 w-1/2">Location</th>
+                      <th className="py-4 px-6 hidden md:table-cell">Region ID</th>
+                      <th className="py-4 px-6 text-right">Latency</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {groupedEndpoints[group].sort((a, b) => {
+                      // Sort by median if available, else label
+                      const medA = medians[a.id] || Infinity;
+                      const medB = medians[b.id] || Infinity;
+                      // Push non-started/null to bottom but keep alphabetical
+                      if (medA === Infinity && medB === Infinity) return a.label.localeCompare(b.label);
+                      if (medA !== medB) return medA - medB;
+                      return a.label.localeCompare(b.label);
+                    }).map(endpoint => (
+                      <EndpointRow
+                        key={endpoint.id}
+                        endpoint={endpoint}
+                        isFastest={endpoint.id === fastestId}
+                        onMedianUpdate={handleMedianUpdate}
+                        ref={el => { rowRefs.current[endpoint.id] = el; }}
+                      />
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
           ))}
         </div>
 

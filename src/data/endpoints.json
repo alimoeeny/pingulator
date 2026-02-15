@@ -388,5 +388,113 @@
         "label": "MintheOnline.com",
         "url": "http://mintheonline.com",
         "group": "Custom Sites"
+    },
+    {
+        "id": "google-ads",
+        "label": "Google Ads",
+        "url": "https://pagead2.googlesyndication.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "doubleclick",
+        "label": "DoubleClick",
+        "url": "https://ad.doubleclick.net",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "google-analytics",
+        "label": "Google Analytics",
+        "url": "https://www.google-analytics.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "google-tag-manager",
+        "label": "Google Tag Manager",
+        "url": "https://www.googletagmanager.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "facebook-pixel",
+        "label": "Facebook Pixel",
+        "url": "https://connect.facebook.net",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "facebook-ads",
+        "label": "Facebook Ads",
+        "url": "https://www.facebook.com/tr",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "amazon-ads",
+        "label": "Amazon Ads",
+        "url": "https://aax.amazon-adsystem.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "criteo",
+        "label": "Criteo",
+        "url": "https://static.criteo.net",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "taboola",
+        "label": "Taboola",
+        "url": "https://cdn.taboola.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "outbrain",
+        "label": "Outbrain",
+        "url": "https://widgets.outbrain.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "adroll",
+        "label": "AdRoll",
+        "url": "https://s.adroll.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "twitter-ads",
+        "label": "Twitter/X Ads",
+        "url": "https://analytics.twitter.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "linkedin-ads",
+        "label": "LinkedIn Ads",
+        "url": "https://snap.licdn.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "tiktok-pixel",
+        "label": "TikTok Pixel",
+        "url": "https://analytics.tiktok.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "pinterest-ads",
+        "label": "Pinterest Ads",
+        "url": "https://ct.pinterest.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "microsoft-ads",
+        "label": "Microsoft Ads",
+        "url": "https://bat.bing.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "hotjar",
+        "label": "Hotjar",
+        "url": "https://static.hotjar.com",
+        "group": "Adblock Check"
+    },
+    {
+        "id": "quantcast",
+        "label": "Quantcast",
+        "url": "https://pixel.quantserve.com",
+        "group": "Adblock Check"
     }
 ]
