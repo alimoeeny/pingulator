@@ -501,5 +501,11 @@
         "label": "AI Goblins",
         "url": "https://ai-goblins.com",
         "group": "Custom Sites"
+    },
+    {
+        "id": "corporal-neocities",
+        "label": "Corporal Neocities",
+        "url": "https://corporal.neocities.org",
+        "group": "Custom Sites"
     }
 ]
