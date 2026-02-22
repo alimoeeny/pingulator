@@ -496,5 +496,10 @@
         "label": "Quantcast",
         "url": "https://pixel.quantserve.com",
         "group": "Adblock Check"
+    },{
+        "id": "ai-goblins",
+        "label": "AI Goblins",
+        "url": "https://ai-goblins.com",
+        "group": "Custom Sites"
     }
 ]
