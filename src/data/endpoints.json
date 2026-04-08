@@ -496,7 +496,8 @@
         "label": "Quantcast",
         "url": "https://pixel.quantserve.com",
         "group": "Adblock Check"
-    },{
+    },
+    {
         "id": "ai-goblins",
         "label": "AI Goblins",
         "url": "https://ai-goblins.com",
@@ -506,6 +507,18 @@
         "id": "corporal-neocities",
         "label": "Corporal Neocities",
         "url": "https://corporal.neocities.org",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "autodoc-dev",
+        "label": "AutoDoc Dev",
+        "url": "https://devautodoc.magi-medical.com",
+        "group": "Custom Sites"
+    },
+    {
+        "id": "autodoc-prod",
+        "label": "AutoDoc Prod",
+        "url": "https://autodoc.magi-medical.com",
         "group": "Custom Sites"
     }
 ]
